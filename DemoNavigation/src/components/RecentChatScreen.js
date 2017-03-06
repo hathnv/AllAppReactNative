@@ -3,12 +3,12 @@ import {
     View, Text, Button
 } from 'react-native';
 
-class RecentChat extends Component {
+class RecentChatScreen extends Component {
     render() {
-        return(
+        return (
             <Text>AllChat</Text>
         );
     }
 }
 
-export default RecentChat;
+export default RecentChatScreen;

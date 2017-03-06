@@ -8,39 +8,39 @@ class ChatScreen extends Component {
     static navigationOptions = {
 
         title: ({ state }) => {
-            if(state.params.mode === 'info'){
+            if (state.params.mode === 'info') {
                 return `${state.params.user}'s Contact Info`;
             }
             return `Chat with ${state.params.user}`;
         },
-        
+
         header: ({ state, setParams }) => {
             let right = (
-                <Button 
+                <Button
                     title={`${state.params.user}'s info`}
-                    onPress={() => setParams({ mode: 'info'})}
+                    onPress={() => setParams({ mode: 'info' })}
                 />
             );
 
-            if (state.params.mode === 'info'){
+            if (state.params.mode === 'info') {
                 right = (
                     <Button
                         title='Done'
-                        onPress={() => setParams({ mode: 'none'})}
+                        onPress={() => setParams({ mode: 'none' })}
                     />
                 );
             }
 
             return { right };
 
-            
+
         }
     };
 
     render() {
         const { params } = this.props.navigation.state;
-        console.log("state of Component",this.props);
-        return(
+        console.log("state of Component", this.props);
+        return (
             <Text>Chat with {params.user}</Text>
         );
     }
