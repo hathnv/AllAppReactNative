@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {
-    Button
+    Button, View
 } from 'react-native';
 
 class HomeScreen extends Component {
@@ -9,11 +9,15 @@ class HomeScreen extends Component {
     };
 
     render() {
+        const { navigate } = this.props.navigation;
         return (
-            <Button
-                title="Go to my Profile"
-                onPress={() => this.props.navigation.navigate('Profile', { name: 'Thang' })}
-            />
+            <View>
+                <Button
+                    title="Go to my Profile"
+                    onPress={() => navigate('Profile', { name: 'Thang' })}
+                />
+                
+            </View>
         );
     }
 }

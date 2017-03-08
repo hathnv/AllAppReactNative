@@ -5,10 +5,12 @@ import {
 
 import AppNavigator from './AppNavigator';
 
+import App2 from './components/App2';
+
 class App extends Component {
     render() {
         return (
-            <AppNavigator />
+            <App2 />
         );
     }
 }
