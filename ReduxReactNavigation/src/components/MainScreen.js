@@ -5,13 +5,18 @@ import {
 import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
+import store from '../store';
+
 class MainScreen extends Component {
+    componentWillMount() {
+        console.log('login btn', this.props.isLoggedIn);
+    }
 
     render() {
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <LoginStatusMessage />
-                <AuthButton />
+                <Text>This is {this.props.isLoggedIn}</Text>
             </View>
         );
     }
@@ -36,17 +41,16 @@ const LoginStatusMessage
         );
     });
 
-const AuthButton = connect(state => ({
-    isLoggedIn: state.AuthReducer.isLoggedIn,
-}), dispatch => ({
-    logout: () => dispatch({ type: 'Logout' }),
-    login: () => dispatch(NavigationActions.navigate({ routeName: 'Login' })),
-}))(({ logout, login, isLoggedIn }) => (
-    <Button
-        title={isLoggedIn ? 'Log Out' : 'Log In'}
-        onPress={isLoggedIn ? logout : login}
-    />
-));
+const AuthButton = () => {
+    console.log('login btn', isLoggedIn);
+    return (
+        {/*<Button
+            title={this.props.isLoggedIn ? 'Logout' : 'Login'}
+            onPress={this.props.isLoggedIn ? logout : login}
+        />*/}
+        // <Text></Text>
+    );
+};
 
 const styles = {
     container: {
@@ -67,10 +71,10 @@ const styles = {
     },
 };
 
-// const mapStateToProps = (state) => {
-//     return {
-//         isLoggedIn: state.AuthReducer.isLoggedIn,
-//     };
-// };
+const mapStateToProps = (state) => {
+    return {
+        isLoggedIn: state.AuthReducer.isLoggedIn,
+    };
+}
 
-export default (MainScreen);
+export default connect(mapStateToProps)(MainScreen);

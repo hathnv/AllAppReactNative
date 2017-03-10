@@ -22,30 +22,13 @@ import ProfileScreen from './components/ProfileScreen';
 import LoginScreen from './components/LoginScreen';
 import MainScreen from './components/MainScreen';
 import { AppNavigator } from './Router';
-
-ProfileScreen.navigationOptions = {
-    title: 'Profile',
-};
-LoginScreen.navigationOptions = {
-    title: 'Log In',
-};
-
-MainScreen.navigationOptions = {
-    title: 'Home Screen',
-};
-
-const AppWithNavigationState = connect(state => ({
-    nav: state.NavReducer,
-}))(({ dispatch, nav }) => (
-    <AppNavigator navigation={addNavigationHelpers({ dispatch, state: nav })} />
-));
-
+import AppNavigatorState from './AppNavigatorState';
 
 class App extends React.Component {
     render() {
         return (
             <Provider store={store}>
-                <AppWithNavigationState />
+                <AppNavigatorState />
             </Provider>
         );
     }
