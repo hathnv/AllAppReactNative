@@ -6,6 +6,7 @@ import { NavigationActions } from 'react-navigation';
 import { connect } from 'react-redux';
 
 import store from '../store';
+import actions from '../actions';
 
 class MainScreen extends Component {
     componentWillMount() {
@@ -13,10 +14,12 @@ class MainScreen extends Component {
     }
 
     render() {
+        console.log('abc ', this.props.isLoggedIn);
         return (
             <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                 <LoginStatusMessage />
-                <Text>This is {this.props.isLoggedIn}</Text>
+                <AuthButton isLoggedIn={this.props.isLoggedIn} />
+
             </View>
         );
     }
@@ -41,14 +44,13 @@ const LoginStatusMessage
         );
     });
 
-const AuthButton = () => {
-    console.log('login btn', isLoggedIn);
+const AuthButton = (props) => {
     return (
-        {/*<Button
-            title={this.props.isLoggedIn ? 'Logout' : 'Login'}
-            onPress={this.props.isLoggedIn ? logout : login}
-        />*/}
-        // <Text></Text>
+
+        <Button
+            title={props.isLoggedIn ? 'Logout' : 'Login'}
+            onPress={() => console.log('press', props.isLoggedIn)}
+        />
     );
 };
 
@@ -77,4 +79,4 @@ const mapStateToProps = (state) => {
     };
 }
 
-export default connect(mapStateToProps)(MainScreen);
+export default connect(mapStateToProps, actions)(MainScreen);

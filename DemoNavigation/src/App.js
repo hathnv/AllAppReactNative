@@ -1,16 +1,16 @@
 import React, { Component } from 'react';
 import {
-
+    AppRegistry, View
 } from 'react-native';
 
-import Navigators from './Navigators';
+import RootNavigator from './RootNavigator';
 
 class App extends Component {
     render() {
-        return(
-            <Navigators />
+        return (
+            <RootNavigator />
         );
     }
 }
 
-export default App;
+AppRegistry.registerComponent('DemoNavigation', () => App);
